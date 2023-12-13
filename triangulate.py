@@ -38,7 +38,7 @@ optimal_yaw_right = wrap_minecraft_yaw_angle(first_eye_throw_player_yaw + 90)
 print(f" -> Optimal right yaw: {optimal_yaw_right}°")
 
 next_yaw_after_first_eye = float(input("Enter yaw of new movement direction: "))
-print("Please move forwards now (I recommend around ~100 blocks, but moving further may increase the accuracy)")
+print("Please move forwards now (I recommend ~100 blocks, but moving further may increase the accuracy)")
 print("Note: Try to keep your camera steady (so that the yaw value does not change)")
 
 # Second eye
@@ -84,7 +84,7 @@ print("============================================================")
 print(f"Alpha: {alpha}°")
 print(f"Beta: {beta}°")
 print(f"Moved distance between throws: {throws_distance}")
-print(f"length of d (height of triangle): {side_d_length}")
+print(f"Length of d (height of triangle): {side_d_length}")
 print(f"Distance from first point to stronghold: {stronghold_dist_from_first}")
 print(f"Forward direction from first point: {forward_from_first}")
 print(f"\n -> Triangulated stronghold location: {stronghold_location}")
