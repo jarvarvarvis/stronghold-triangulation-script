@@ -46,7 +46,7 @@ Triangulation data:
 Alpha: <angle>°
 Beta: <angle>°
 Moved distance between throws: <distance>
-length of d (height of triangle): <length of side d>
+Length of d (height of triangle): <length of side d>
 Distance from first point to stronghold: <distance stronghold <-> first eye throw>
 Forward direction from first point: <direction first point -> stronghold>
 
