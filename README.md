@@ -16,18 +16,15 @@ You are prompted to enter 3 values in total:
 ### Move between eye throws
 
 After entering the values for the first eye throw, you are prompted to rotate left/right
-by 90°. The program will also print the optimal yaw values for a 90°-left/-right rotation
+by 90°. The program will also print the exact yaw values for a 90°-left/-right rotation
 respectively.
-After you've made a decision in which direction to move, enter your new yaw value.
 
-Note that the 90° are not a requirement, just a good choice. Anything around that value probably
-works fine as well.
+Note that rotating by exactly 90° is not a requirement, just a good choice. Anything
+around that value probably works fine as well.
 
-You may now move forwards. Try to keep the camera steady while doing so, the results are the best
-if you move in a straight line from the first position.
-
-Around ~100 blocks should be enough distance to move, but you may travel a further distance. 
-Just remember to keep the camera steady.
+You may now move forwards.
+Around >150 blocks should be enough distance to move, but you may travel a further distance
+to improve the accuracy.
 
 ### Second eye
 
@@ -43,14 +40,18 @@ The program will produce the following output:
 ```
 Triangulation data:
 ============================================================
-Alpha: <angle>°
-Beta: <angle>°
+First eye direction: <direction>
+Second eye direction: <direction>
 Moved distance between throws: <distance>
+
+Alpha: <angle> radians
+Beta: <angle> radians
+
 Length of d (height of triangle): <length of side d>
 Distance from first point to stronghold: <distance stronghold <-> first eye throw>
 Forward direction from first point: <direction first point -> stronghold>
 
- -> Triangulated stronghold location: <stronghold (X, Z) coordinates>
+ => Triangulated stronghold location: <stronghold (X, Z) coordinates>
 ```
 
 The relevant output (the triangulated stronghold location) is in the last line.
