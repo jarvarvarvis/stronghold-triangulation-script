@@ -39,8 +39,16 @@ def visualize_results(
     axes = plt.subplot(111, aspect="equal")
     axes.plot(xs, ys, 'x')
    
-    # Plot line between throw positions
-    axes.plot([first_eye_pos[0], second_eye_pos[0]], [first_eye_pos[1], second_eye_pos[1]])
+    # Plot line between throw positions and stronghold
+    axes.plot([
+        first_eye_pos[0], second_eye_pos[0],
+        first_eye_pos[0], stronghold_location[0],
+        second_eye_pos[0], stronghold_location[0],
+    ], [
+        first_eye_pos[1], second_eye_pos[1],
+        first_eye_pos[1], stronghold_location[1],
+        second_eye_pos[1], stronghold_location[1],
+    ])
     
     for i in range(len(annotations)):
         annotation = annotations[i]
