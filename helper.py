@@ -1,42 +1,23 @@
 import math
 
-def wrap_minecraft_yaw_angle(angle):
-    while angle < -180:
-        angle += 360
-
-    while angle > 180:
-        angle -= 360
-
-    return angle
-
-def look_vector(yaw):
-    x = -math.sin(math.radians(yaw))
-    y = math.cos(math.radians(yaw))
-
-    # Vector always has a length of 1!
-    return (x, y)
-
-def vector_dot(first, second):
-    (x1, y1) = first
-    (x2, y2) = second
-
-    return x1 * x2 + y1 * y2
-
 def vector_magnitude(vector):
     (x, y) = vector
     return math.sqrt(x * x + y * y)
 
-def vector_angle(first, second):
-    numerator = vector_dot(first, second)
-    denominator = vector_magnitude(first) * vector_magnitude(second)
+# From StackOverflow: https://stackoverflow.com/a/20679579
+def line(p1, p2):
+    A = (p1[1] - p2[1])
+    B = (p2[0] - p1[0])
+    C = (p1[0]*p2[1] - p2[0]*p1[1])
+    return A, B, -C
 
-    if denominator == 0.0:
-        return 0.0
-
-    angle = math.acos(numerator / denominator)
-
-    # Angle >= 180°
-    if angle >= math.pi / 2.0:
-        angle = math.pi - angle
-    return angle
-
+def find_line_intersection(L1, L2):
+    D  = L1[0] * L2[1] - L1[1] * L2[0]
+    Dx = L1[2] * L2[1] - L1[1] * L2[2]
+    Dy = L1[0] * L2[2] - L1[2] * L2[0]
+    if D != 0:
+        x = Dx / D
+        y = Dy / D
+        return x,y
+    else:
+        return None

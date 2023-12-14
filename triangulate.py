@@ -1,72 +1,58 @@
 import math
 from helper import *
+from visualization import visualize_results
 
 # Get input
 # First eye
 print("First eye:")
 print("============================================================")
-first_eye_throw_player_yaw = float(input("Enter player yaw: "))
 first_eye_throw_player_x = float(input("Enter player X: "))
 first_eye_throw_player_z = float(input("Enter player Z: "))
-
-print()
-print("Move between eye throws:")
-print("============================================================")
-print("Please rotate left/right by ~90°, exact angles:")
-
-exact_yaw_left = wrap_minecraft_yaw_angle(first_eye_throw_player_yaw - 90)
-print(f"- Left yaw: {exact_yaw_left}°")
-
-exact_yaw_right = wrap_minecraft_yaw_angle(first_eye_throw_player_yaw + 90)
-print(f"- Right yaw: {exact_yaw_right}°")
-
-print()
-print("Please move forwards now (I recommend >150 blocks, but moving even further will increase the accuracy)")
+first_eye_target_x = float(input("Enter eye X: "))
+first_eye_target_z = float(input("Enter eye Z: "))
 
 # Second eye
 print()
 print("Second eye:")
 print("============================================================")
-second_eye_throw_player_yaw = float(input("Enter player yaw: "))
 second_eye_throw_player_x = float(input("Enter player X: "))
 second_eye_throw_player_z = float(input("Enter player Z: "))
+second_eye_target_x = float(input("Enter eye X: "))
+second_eye_target_z = float(input("Enter eye Z: "))
 
-# Calculate distance between the throw locations
-throws_vec = (second_eye_throw_player_x - first_eye_throw_player_x, second_eye_throw_player_z - first_eye_throw_player_z)
-throws_distance = vector_magnitude(throws_vec)
+# Calculate line intersection point
+first_eye_pos = (first_eye_throw_player_x, first_eye_throw_player_z)
+first_eye_target = (first_eye_target_x, first_eye_target_z)
+second_eye_pos = (second_eye_throw_player_x, second_eye_throw_player_z)
+second_eye_target = (second_eye_target_x, second_eye_target_z)
 
-# Calculate look vectors from yaw values
-first_eye_forward = look_vector(first_eye_throw_player_yaw)
-second_eye_forward = look_vector(second_eye_throw_player_yaw)
-
-# Calculate angles
-alpha_radians = vector_angle(first_eye_forward, throws_vec)
-beta_radians = vector_angle(second_eye_forward, throws_vec)
-
-# Calculate height of the triangle
-side_d_length = throws_distance * math.sin(alpha_radians) * math.sin(beta_radians) / math.sin(alpha_radians + beta_radians)
-
-# Calculate distance from first throw point to stronghold
-stronghold_dist_from_first = side_d_length / math.sin(alpha_radians)
-
-# Calculate the location of the stronghold
-stronghold_location_x = first_eye_throw_player_x + first_eye_forward[0] * stronghold_dist_from_first
-stronghold_location_z = first_eye_throw_player_z + first_eye_forward[1] * stronghold_dist_from_first
-stronghold_location = (stronghold_location_x, stronghold_location_z)
+L1 = line(first_eye_pos, first_eye_target)
+L2 = line(second_eye_pos, second_eye_target)
+stronghold_location = find_line_intersection(L1, L2)
 
 # Output
 print()
-print("Triangulation data:")
+print("Triangulation result:")
 print("============================================================")
-print(f"First eye direction: {first_eye_forward}")
-print(f"Second eye direction: {second_eye_forward}")
-print(f"Moved distance between throws: {throws_distance}")
+
+print(f"First eye position:         {p0}")
+print(f"First eye target position:  {p1}")
+print(f"Second eye position:        {p2}")
+print(f"Second eye target position: {p3}")
 print()
-print(f"Alpha: {alpha_radians} radians")
-print(f"Beta: {beta_radians} radians")
-print()
-print(f"Length of d (height of triangle): {side_d_length}")
-print(f"Distance from first point to stronghold: {stronghold_dist_from_first}")
-print(f"Forward direction from first point: {first_eye_forward}")
+
+distance_between_throw_positions = vector_magnitude((p0[0] - p2[0], p0[1] - p2[1]))
+print(f"Distance between throws: {distance_between_throw_positions}")
 print()
 print(f" => Triangulated stronghold location: {stronghold_location}")
+
+# Visualization
+print()
+print("Visualization:")
+print("============================================================")
+print("Note about the results:")
+print("If the final stronghold position does *not* lie within a purple ring, the result is probably wrong.")
+print("What might have happened is that the positions from which you have thrown the eyes were too close")
+print("to each other. Try to run the program again to maybe get more accurate results.")
+
+visualize_results(first_eye_pos, first_eye_target, second_eye_pos, second_eye_target, stronghold_location)

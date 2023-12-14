@@ -8,31 +8,32 @@ First of all, run the script.
 
 ### First eye
 
-You are prompted to enter 3 values in total:
-- Your camera's yaw when looking in the direction of flight of the eye
+You are prompted to enter 4 values in total:
 - The X component of the player's position when the eye is thrown
 - The Z component of the player's position when the eye is thrown
+- The X component of the eye's position after is has stopped moving
+- The Z component of the eye's position after is has stopped moving
 
 ### Move between eye throws
 
-After entering the values for the first eye throw, you are prompted to rotate left/right
-by 90°. The program will also print the exact yaw values for a 90°-left/-right rotation
-respectively.
+After entering the values for the first eye throw, you have to move somewhere else to get
+data for the second eye throw.
 
-Note that rotating by exactly 90° is not a requirement, just a good choice. Anything
-around that value probably works fine as well.
-
-You may now move forwards.
+Rotate ~90° left or right and start moving forward.
 Around >150 blocks should be enough distance to move, but you may travel a further distance
 to improve the accuracy.
+
+Be careful that the eye doesn't start tracking another stronghold, since that will mess up the 
+results!
 
 ### Second eye
 
 When you've reached a good location to throw the second eye, you are again prompted to enter
-the following 3 values:
-- Your camera's yaw when looking in the direction of flight of the eye
+the following 4 values:
 - The X component of the player's position when the eye is thrown
 - The Z component of the player's position when the eye is thrown
+- The X component of the eye's position after is has stopped moving
+- The Z component of the eye's position after is has stopped moving
 
 ### Output
 
@@ -40,18 +41,13 @@ The program will produce the following output:
 ```
 Triangulation data:
 ============================================================
-First eye direction: <direction>
-Second eye direction: <direction>
-Moved distance between throws: <distance>
+First eye position:         (<X>, <Z>)
+First eye target position:  (<X>, <Z>)
+Second eye position:        (<X>, <Z>)
+Second eye target position: (<X>, <Z>)
+Distance between throws: <distance>
 
-Alpha: <angle> radians
-Beta: <angle> radians
-
-Length of d (height of triangle): <length of side d>
-Distance from first point to stronghold: <distance stronghold <-> first eye throw>
-Forward direction from first point: <direction first point -> stronghold>
-
- => Triangulated stronghold location: <stronghold (X, Z) coordinates>
+ => Triangulated stronghold location: (X, Z)
 ```
 
 The relevant output (the triangulated stronghold location) is in the last line.
