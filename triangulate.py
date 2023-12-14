@@ -9,8 +9,6 @@ first_eye_throw_player_yaw = float(input("Enter player yaw: "))
 first_eye_throw_player_x = float(input("Enter player X: "))
 first_eye_throw_player_z = float(input("Enter player Z: "))
 
-print("Please do not move!")
-
 print()
 print("Move between eye throws:")
 print("============================================================")
