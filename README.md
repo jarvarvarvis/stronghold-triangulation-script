@@ -11,8 +11,8 @@ First of all, run the script.
 You are prompted to enter 4 values in total:
 - The X component of the player's position when the eye is thrown
 - The Z component of the player's position when the eye is thrown
-- The X component of the eye's position after is has stopped moving
-- The Z component of the eye's position after is has stopped moving
+- The X component of the eye's position after it has stopped moving
+- The Z component of the eye's position after it has stopped moving
 
 ### Move between eye throws
 
@@ -32,8 +32,8 @@ When you've reached a good location to throw the second eye, you are again promp
 the following 4 values:
 - The X component of the player's position when the eye is thrown
 - The Z component of the player's position when the eye is thrown
-- The X component of the eye's position after is has stopped moving
-- The Z component of the eye's position after is has stopped moving
+- The X component of the eye's position after it has stopped moving
+- The Z component of the eye's position after it has stopped moving
 
 ### Output
 
