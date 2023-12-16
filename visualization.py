@@ -30,10 +30,17 @@ def plot_rings():
         axes = plt.subplot(111, aspect="equal")
         axes.fill(np.ravel(xs), np.ravel(ys), facecolor="#c181c1", edgecolor="#c181c1")
 
+def display(title):
+    # Finish drawing
+    plt.axis([-max_radius, max_radius, -max_radius, max_radius])
+
+    plt.title(title)
+    plt.show()
+
 def visualize_results(
         first_eye_pos, first_eye_target,
         second_eye_pos, second_eye_target,
-        stronghold_location
+        stronghold_location,
 ):
     # Plot stronghold rings
     plot_rings()
@@ -49,14 +56,9 @@ def visualize_results(
     point_collection.add_point("Stronghold", stronghold_location)
 
     # Plot line between throw positions and stronghold
-    point_collection.add_line(0, 4) # Eye 1 -> Stronghold
-    point_collection.add_line(2, 4) # Eye 2 -> Stronghold
-    point_collection.add_line(0, 2) # Eye 1 -> Eye 2
+    point_collection.add_line(0, 1) # Eye 1 -> Eye 1 target
+    point_collection.add_line(2, 3) # Eye 2 -> Eye 2 target
 
     point_collection.plot()
-
-    # Finish drawing
-    plt.axis([-max_radius, max_radius, -max_radius, max_radius])
-
-    plt.title("Triangulation visualization")
-    plt.show()
+    
+    display("Triangulation visualization")
