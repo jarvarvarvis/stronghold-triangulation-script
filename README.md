@@ -57,3 +57,11 @@ The relevant output (the triangulated stronghold location) is in the last line.
 
 Triangulation is prone to small errors in the input values, so maybe run the script two or three
 times to get accurate results.
+
+
+## Point Finder
+
+There is also the point_finder.py script that helps to locate just one eye throw in relation to the
+stronghold rings.
+
+I recommend to run that one first, so that you can find a good place for the second eye throw.
